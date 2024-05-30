@@ -15,7 +15,7 @@
 
             if (!user.PasswordChecker(password))
             {
-                Console.WriteLine("Password sehv daxil edilib!");
+                Console.WriteLine("Password is wrong!");
                 return;
             }
             while (true)
@@ -34,7 +34,7 @@
                     Console.Write("Enter group number: ");
                     string groupNo = Console.ReadLine();
                     Console.Write("Enter student limit: ");
-                    int studentLimit = int.Parse(Console.ReadLine());
+                    int studentLimit = Convert.ToInt32(Console.ReadLine());
 
                     Group group = new Group(groupNo, studentLimit);
 
@@ -68,13 +68,9 @@
                             int id = int.Parse(Console.ReadLine());
                             var student = group.GetStudent(id);
                             if (student != null)
-                            {
                                 student.StudentInfo();
-                            }
                             else
-                            {
                                 Console.WriteLine("Student not found.");
-                            }
                         }
                         else if (groupChoice == "3")
                         {
@@ -86,11 +82,13 @@
                             group.AddStudent(student);
                         }
                         else if (groupChoice == "0")
-                        {
                             break;
-                        }
+                        else
+                            Console.Write("You wrote wrong number, please write again: ");
                     }
                 }
+                else
+                    Console.Write("You wrote wrong number, please write again: ");
             }
         }
     }

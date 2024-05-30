@@ -38,26 +38,19 @@ namespace Task_9___30._05._2024
             if (groupNo.Length != 5)
                 return false;
 
-            bool hasUpper = false;
-            bool hasDigit = false;
-
-            foreach (char ch in groupNo)
+            for (int i = 0; i < 2; i++)
             {
-                if (ch == 0 && ch == 1)
-                    if (char.IsUpper(ch))
-                        hasUpper = true;
-                    else
-                    if (char.IsUpper(ch))
-                        hasDigit = true;
+                if (!char.IsUpper(groupNo[i]))
+                    return false;
             }
 
-            bool returner()
+            for (int i = 2; i < 5; i++)
             {
-                if (hasUpper == false) return false;
-                if (hasDigit == false) return false;
-                else return true;
+                if (!char.IsDigit(groupNo[i]))
+                    return false;
             }
-            return returner();
+
+            return true;
         }
 
         public void AddStudent(Student student)
@@ -70,18 +63,6 @@ namespace Task_9___30._05._2024
 
         public Student GetStudent(int? id)
         {
-            //for (int i = 0; i < studentCount; i++)
-            //{
-            //    if (i == id)
-            //    {
-            //        return Students[i];
-            //    }
-            //    if (Students[i].Id == id)
-            //    {
-            //        return Students[i];
-            //    }
-            //}
-
             foreach (var student in Students)
                 if (student.Id == id)
                     return student;
